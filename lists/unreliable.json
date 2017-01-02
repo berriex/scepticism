@@ -1,0 +1,7 @@
+{
+  "message": "This is a message from the unreliable list!!!",
+  "urls": [
+    ".*facebook\\.com*",
+    ".*localhost*"
+  ]
+}

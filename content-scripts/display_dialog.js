@@ -7,29 +7,31 @@ function addBox(){
   if (window.self === window.top) {
 
       var body = document.querySelector('body');
-      var mainBox = document.createElement('div');
-      var container = document.createElement('div');
+      if( body ){
+        var mainBox = document.createElement('div');
+        var container = document.createElement('div');
 
-      mainBox.setAttribute('class', 'scepticism-box')
-      container.setAttribute('class', 'scepticism-container')
+        mainBox.setAttribute('class', 'scepticism-box')
+        container.setAttribute('class', 'scepticism-container')
 
-      var hr = document.createElement('hr');
+        var hr = document.createElement('hr');
 
-      var closeButton = document.createElement('input');
-      closeButton.type = 'button';
-      closeButton.value = 'Ok, ho capito! Chiudi';
-      closeButton.onclick = closeDialog;
-      closeButton.setAttribute('class', 'scepticism-close')
+        var closeButton = document.createElement('input');
+        closeButton.type = 'button';
+        closeButton.value = 'Ok, ho capito! Chiudi';
+        closeButton.onclick = closeDialog;
+        closeButton.setAttribute('class', 'scepticism-close')
 
-      var content = document.createElement('ul');
-      content.setAttribute('class', 'scepticism-content');
+        var content = document.createElement('ul');
+        content.setAttribute('class', 'scepticism-content');
 
-      container.appendChild(content);
-      container.appendChild(hr);
-      container.appendChild(closeButton);
-      mainBox.appendChild(container); //add the text node to the newly created div.
-      body.appendChild(mainBox);
-  }
+        container.appendChild(content);
+        container.appendChild(hr);
+        container.appendChild(closeButton);
+        mainBox.appendChild(container); //add the text node to the newly created div.
+        body.appendChild(mainBox);
+      }
+    }
 }
 
 function appendMessage(message){

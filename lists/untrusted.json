@@ -1,0 +1,10 @@
+{
+  "message": "Be aware: this is an untrusted website!",
+  "urls": [
+    ".*localhost*",
+    ".*disinformazione\\.it*",
+    ".*dionidream\\.com",
+    ".*informarexresistere\\.fr*",
+    ".*sciechimiche\\.org"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "lists": [
+    {
+      "name": "untrusted sites",
+      "description": "These sites always publish unfounded news and can not be trusted in any way",
+      "url": ""
+    },
+    {
+      "name": "unreliable sites",
+      "description": "These sites sometimes publish unfounded news and cannot be reliable at all",
+      "url": ""
+    }
+
+  ]
+}
