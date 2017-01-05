@@ -67,14 +67,12 @@ var listHandler = {
     });
   },
 
-  // disable the list
-  'disable': (index)=>{
-    listHandler.indexList[index].active = false;
+  // disable/enable the list
+  'toggle': (index)=>{
+    listHandler.indexList[index].active = !listHandler.indexList[index].active;
     var lists = listHandler.indexList;
     browser.storage.local.set({lists});
   }
-
-
 }
 
 
