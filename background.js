@@ -1,9 +1,7 @@
 'use strict'
 
 function logURL(params) {
-  var sources = listHandler.getAll();
-  console.log( 'sources' )
-  console.log( sources )
+  var sources = listHandler.getLists();
   for( var i=0; i<sources.length; i++){
     var result = sources[i].urls.some( (element) => {
         var tst = new RegExp(element);

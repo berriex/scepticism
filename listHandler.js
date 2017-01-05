@@ -1,6 +1,8 @@
 'use strict'
 
 var listHandler = {
+
+  // try to read from localstorage, if nothing found download lists from the web
   'init': ()=>{
     var list = browser.storage.local.get('lists').then(
       (list)=>{
@@ -10,15 +12,12 @@ var listHandler = {
           listHandler.indexList = list;
         }
 
-      },
-      (err)=>{
-        listHandler.readIndex();
       }
     );
   },
 
+  // get the indexlist from github
   'readIndex': ()=>{
-    // get the index from github
     var raw = 'https://raw.githubusercontent.com/berriex/scepticism/master/lists/index.json';
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open('GET', raw, true);
@@ -36,6 +35,7 @@ var listHandler = {
     xmlhttp.send(null);
   },
 
+  // download a single list
   'downloadList': ( index )=>{
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open('GET', listHandler.indexList[index].url, true);
@@ -46,15 +46,8 @@ var listHandler = {
           listHandler.indexList[index]['urls'] = result.urls;
           listHandler.indexList[index]['message'] = result.message;
           if( index === (listHandler.indexList.length-1) ){
-            var save = browser.storage.local.set({listHandler}).then(
-            (ok)=>{
-              console.log( 'local save ok' );
-              console.log( ok );
-            },
-            (err)=>{
-              console.log( err);
-            }
-            );
+            var lists = listHandler.indexList;
+            browser.storage.local.set({lists});
           }
         }
       }
@@ -62,9 +55,26 @@ var listHandler = {
     xmlhttp.send(null);
   },
 
+  // get all the lists
   'getAll': ()=>{
     return listHandler.indexList;
+  },
+
+  // get only the active lists
+  'getLists': ()=>{
+    return listHandler.indexList.filter( function(item){
+      return item.active;
+    });
+  },
+
+  // disable the list
+  'disable': (index)=>{
+    listHandler.indexList[index].active = false;
+    var lists = listHandler.indexList;
+    browser.storage.local.set({lists});
   }
+
+
 }
 
 

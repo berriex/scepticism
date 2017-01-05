@@ -10,7 +10,7 @@
       "name": "unreliable sites",
       "description": "These sites sometimes publish unfounded news and cannot be reliable at all",
       "url": "https://raw.githubusercontent.com/berriex/scepticism/master/lists/unreliable.json",
-      "active": true
+      "active": false
     }
 
   ]
